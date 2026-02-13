@@ -60,3 +60,8 @@ bags/*
 
 # VS Code
 .vscode
+
+# ROS2 colcon
+build/
+install/
+log/

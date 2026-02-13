@@ -1,0 +1,34 @@
+
+- Path planner node
+    * Path planning
+    * Outputs waypoints, and desired yaw of goal waypoint
+
+- Path follower node
+    * for wp in waypoints
+    * Executes wheel motion
+    * Keeps track of robot x,y,yaw -> compares it to path
+    * Corrects it
+
+    * P controller / pure pursuit
+
+- Fine alignment node
+    * If sees objects or box:
+        - executes alignment
+        - output waypoints, go to path follower node
+    * Else:
+        - rotate in place until object is visible, with timeout
+        - if rotate fails: backup until object or box is visible, with timeout
+
+
+Pipeline:
+
+- Start
+- Plan to object standoff pose
+- Follow path → arrive
+- Align-to-object (fine) → “ready_to_pick”
+- Pick
+- Plan to box standoff pose
+- Follow path → arrive
+- Align-to-box (fine) → “ready_to_drop”
+- Drop
+
