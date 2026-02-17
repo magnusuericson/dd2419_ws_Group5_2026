@@ -21,6 +21,8 @@ class Odometry(Node):
     def __init__(self):
         super().__init__('odometry')
 
+        self.get_logger().info("hello from odometry")
+
         # Initialize the transform broadcaster
         self._tf_broadcaster = TransformBroadcaster(self)
 
